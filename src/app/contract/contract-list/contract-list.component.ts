@@ -22,6 +22,7 @@ export class ContractListComponent {
     { property: 'contractNumber', label: 'Nº do Contrato' },
     { property: 'contractDate', label: 'Data do Contrato', type: 'date' },
     { property: 'contractValue', label: 'Valor do Contrato'},
-    { property: 'status', label: 'Status'}
+    { property: 'status', label: 'Status'},
+    { property: 'client.name', label: 'Cliente'}
   ];
 }

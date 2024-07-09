@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
-import { PoPageDynamicDetailActions, PoPageDynamicDetailField } from '@po-ui/ng-templates';
+import {
+  PoPageDynamicDetailActions,
+  PoPageDynamicDetailField,
+} from '@po-ui/ng-templates';
 
 @Component({
   selector: 'app-contract-view',
@@ -23,7 +26,13 @@ export class ContractViewComponent implements OnInit {
     { property: 'contractDate', label: 'Data do Contrato', type: 'date' },
     { property: 'contractValue', label: 'Valor do Contrato' },
     { property: 'status', label: 'Status' },
-
+    {
+      property: 'clientId',
+      label: 'Cliente',
+      fieldLabel: 'name',
+      fieldValue: 'id',
+      optionsService: 'http://localhost:3000/client',
+    },
   ];
 
   constructor(private activatedRoute: ActivatedRoute) {}
@@ -36,4 +45,3 @@ export class ContractViewComponent implements OnInit {
     });
   }
 }
-

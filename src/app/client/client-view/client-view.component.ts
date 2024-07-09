@@ -16,16 +16,15 @@ export class ClientViewComponent implements OnInit {
     edit: '/clients/edit/:id',
     remove: '/clients',
   };
-
+  
   readonly fields: Array<PoPageDynamicDetailField> = [
     { property: 'id', key: true, divider: 'Dados do cliente' },
     { property: 'name', label: 'Nome', },
     {
       property: 'document',
-      label: 'CPF/CNPJ',
-      gridXlColumns: 4,
-      gridLgColumns: 4,
-    }
+      label: 'CPF/CNPJ',    },
+    { property: 'phone', label: 'Telefone' },
+    { property: 'contract.id', label: 'Contrato', fieldLabel: 'contractNumber', fieldValue: 'id', optionsService: 'http://localhost:3000/contract'},
   ];
 
   constructor(private activatedRoute: ActivatedRoute) {}
