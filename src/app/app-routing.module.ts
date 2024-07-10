@@ -6,12 +6,7 @@ const routes: Routes = [
     path: 'clients',
     loadChildren: () =>
       import('../app/client/client.module').then((m) => m.ClientModule),
-  },
-  {
-    path: 'contracts',
-    loadChildren: () =>
-      import('../app/contract/contract.module').then((m) => m.ContractModule),
-  },
+  }
 ];
 
 @NgModule({
