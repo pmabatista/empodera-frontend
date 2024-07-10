@@ -10,6 +10,8 @@
     [p-items]="clients"
     [p-actions]="tableActions"
     [p-actions-right]="tableActions"
+    [p-show-more-disabled]="!hasNext"
+    (p-show-more)="showMore()">
   >
   </po-table>
 </po-page-dynamic-search>

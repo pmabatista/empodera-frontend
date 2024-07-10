@@ -20,8 +20,8 @@ export class ClientService {
     );
   }
 
-  getMany(status?: string): Observable<ApiResponse<Client>> {
-    const params: any = {};
+  getMany(status?: string, page = 1, limit = 10): Observable<ApiResponse<Client>> {
+    const params: any = { page, limit };
     if (status) {
       params.status = status;
     }
