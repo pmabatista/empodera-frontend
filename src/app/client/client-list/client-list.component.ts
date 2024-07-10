@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PoNotificationService, PoPageAction, PoTableAction, PoTableColumn } from '@po-ui/ng-components';
+import {
+  PoNotificationService,
+  PoPageAction,
+  PoTableAction,
+  PoTableColumn,
+} from '@po-ui/ng-components';
 import { PoPageDynamicSearchFilters } from '@po-ui/ng-templates';
 import { ClientService } from '../../services/client.service';
 import { ContractService } from '../../services/contract.service';
@@ -22,7 +27,6 @@ export class ClientListComponent implements OnInit {
 
   readonly pageActions: PoPageAction[] = [
     { label: 'Novo', url: '/clients/new', icon: 'po-icon-plus' },
-    { label: 'Atualizar', action: this.resetFilters.bind(this), icon: 'po-icon-refresh' }
   ];
 
   readonly tableActions: PoTableAction[] = [
@@ -30,11 +34,20 @@ export class ClientListComponent implements OnInit {
       action: this.cancelContract.bind(this),
       icon: 'po-icon-close',
       label: 'Cancelar Contrato',
-      disabled: (client: Client) => client.contract.status === ContractStatus.Canceled,
+      disabled: (client: Client) =>
+        client.contract.status === ContractStatus.Canceled,
     },
     { action: this.edit.bind(this), icon: 'po-icon-edit', label: 'Editar' },
-    { action: this.details.bind(this), icon: 'po-icon-info', label: 'Visualizar' },
-    { action: this.remove.bind(this), icon: 'po-icon po-icon-delete', label: 'Excluir' },
+    {
+      action: this.details.bind(this),
+      icon: 'po-icon-info',
+      label: 'Visualizar',
+    },
+    {
+      action: this.remove.bind(this),
+      icon: 'po-icon po-icon-delete',
+      label: 'Excluir',
+    },
   ];
 
   readonly columns: PoTableColumn[] = [
@@ -47,10 +60,22 @@ export class ClientListComponent implements OnInit {
       label: 'Status do Contrato',
       type: 'label',
       labels: [
-        { value: ContractStatus.OnTime, color: 'color-11', label: 'Dentro do Prazo' },
-        { value: ContractStatus.Overdue, color: 'color-08', label: 'Em Atraso' },
+        {
+          value: ContractStatus.OnTime,
+          color: 'color-11',
+          label: 'Dentro do Prazo',
+        },
+        {
+          value: ContractStatus.Overdue,
+          color: 'color-08',
+          label: 'Em Atraso',
+        },
         { value: ContractStatus.Paid, color: 'color-10', label: 'Pago' },
-        { value: ContractStatus.Canceled, color: 'color-07', label: 'Cancelado' },
+        {
+          value: ContractStatus.Canceled,
+          color: 'color-07',
+          label: 'Cancelado',
+        },
       ],
     },
   ];
@@ -82,13 +107,13 @@ export class ClientListComponent implements OnInit {
   private loadClients(filter?: string): void {
     this.isLoading = true;
     this.clientService.getMany(filter, this.page, this.pageSize).subscribe(
-      response => {
+      (response) => {
         this.allClients = [...this.allClients, ...response.items];
         this.clients = this.allClients;
         this.hasNext = response.hasNext;
         this.isLoading = false;
       },
-      error => {
+      (error) => {
         this.poNotification.error({ message: 'Erro ao carregar clientes!' });
         this.isLoading = false;
       }
@@ -133,9 +158,11 @@ export class ClientListComponent implements OnInit {
   }
 
   remove(client: Client): void {
-    this.clientService.remove(client.contract.id).subscribe(
+    this.clientService.remove(client.id).subscribe(
       () => {
-        this.poNotification.success({ message: 'Cliente excluído com sucesso!' });
+        this.poNotification.success({
+          message: 'Cliente excluído com sucesso!',
+        });
         this.resetFilters();
       },
       () => this.poNotification.error({ message: 'Erro ao excluir cliente!' })
@@ -144,7 +171,12 @@ export class ClientListComponent implements OnInit {
 
   cancelContract(client: Client): void {
     this.contractService.cancelContract(client.contract.id).subscribe(
-      () => this.poNotification.success({ message: 'Contrato cancelado com sucesso!' }),
+      () => {
+        this.poNotification.success({
+          message: 'Contrato cancelado com sucesso!',
+        });
+        this.resetFilters();
+      },
       () => this.poNotification.error({ message: 'Erro ao cancelar contrato!' })
     );
   }
