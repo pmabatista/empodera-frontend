@@ -6,6 +6,10 @@ const routes: Routes = [
     path: 'clients',
     loadChildren: () =>
       import('../app/client/client.module').then((m) => m.ClientModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'clients',
   }
 ];
 
