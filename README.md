@@ -50,4 +50,4 @@ O servidor de desenvolvimento estará acessível em http://localhost:4200
 
 **Obs.: O docker-compose do projeto deve ser executado anteriormente para criar a rede de comunicação entre os containers.**
 
-O aplicativo estará acessível em http://localhost:80
+O aplicativo estará acessível em http://localhost:4200
