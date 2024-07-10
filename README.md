@@ -1,27 +1,51 @@
-# EmpoderaFrontend
+# Frontend Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+## Por que Angular?
 
-## Development server
+Optei pelo Angular para o frontend pelos seguintes motivos:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **TypeScript**: Permite desenvolvimento mais robusto e escalável, com tipagem estática e suporte moderno a ECMAScript.
+- **Component-Based Architecture**: Facilita a criação de componentes reutilizáveis e a manutenção do código.
+- **RxJS**: Facilita o tratamento de fluxos de dados assíncronos e interações com APIs.
+- **Angular CLI**: Oferece ferramentas poderosas para desenvolvimento, build e testes.
 
-## Code scaffolding
+## Como Executar
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Pré-requisitos
 
-## Build
+- Node.js versão 20 ou superior
+- Angular CLI (instalado globalmente)
+- Docker (opcional, para execução via contêiner)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Passo a Passo
 
-## Running unit tests
+1. **Instalação das Dependências**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```bash
+   npm install
+   ```
 
-## Running end-to-end tests
+2. **Compilação e Execução Local**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```bash
+   ng serve
+   ```
 
-## Further help
+O servidor de desenvolvimento estará acessível em http://localhost:4200
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+### Executando via Docker
+
+- Para executar via Docker, você pode construir uma imagem Docker do projeto:
+
+   ```bash
+   docker build -t frontend-angular .
+   ```
+
+- E então executar o contêiner:
+
+  ```bash
+  docker run -p 80:80 frontend-angular
+  ```
+
+O aplicativo estará acessível em http://localhost:80
