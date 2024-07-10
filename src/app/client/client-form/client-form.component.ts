@@ -6,6 +6,7 @@ import {
   PoPageDynamicEditField,
 } from '@po-ui/ng-templates';
 import { ContractStatus } from '../../models/client.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-client-form',
@@ -13,6 +14,7 @@ import { ContractStatus } from '../../models/client.model';
   styleUrls: ['./client-form.component.css'],
 })
 export class ClientFormComponent implements OnInit {
+  apiUrl = `${environment.apiUrl}/client`; 
   title = 'Novo cliente';
 
   public readonly actions: PoPageDynamicEditActions = {
