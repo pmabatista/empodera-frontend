@@ -60,7 +60,6 @@ export class ClientListComponent implements OnInit {
         ContractStatus.Paid,
         ContractStatus.Canceled,
       ],
-      forceOptionsComponentType: ForceOptionComponentEnum.radioGroup
     },
   ];
 
