@@ -45,7 +45,9 @@ O servidor de desenvolvimento estará acessível em http://localhost:4200
 - E então executar o contêiner:
 
   ```bash
-  docker run -p 80:80 frontend-angular
+  docker run -d -p 4200:4200 --network=empodera-network frontend-angular
   ```
+
+**Obs.: O docker-compose do projeto deve ser executado anteriormente para criar a rede de comunicação entre os containers.**
 
 O aplicativo estará acessível em http://localhost:80
