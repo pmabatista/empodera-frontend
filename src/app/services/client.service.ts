@@ -3,18 +3,29 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Client } from '../models/client.model';
+import { ApiResponse } from '../interfaces/api-response';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ContractService {
+export class ClientService {
+  private readonly apiUrl = `${environment.apiUrl}/client`;
 
-  private readonly apiUrl = `${environment.apiUrl}/contract`;
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  remove(clientId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${clientId}`).pipe(
+      catchError(this.handleError)
+    );
+  }
 
-  cancelContract(contractId: number): Observable<void> {
-    return this.http.patch<void>(`${this.apiUrl}/${contractId}/cancel`, {}).pipe(
+  getMany(status?: string): Observable<ApiResponse<Client>> {
+    const params: any = {};
+    if (status) {
+      params.status = status;
+    }
+    return this.http.get<ApiResponse<Client>>(`${this.apiUrl}`, { params }).pipe(
       catchError(this.handleError)
     );
   }
