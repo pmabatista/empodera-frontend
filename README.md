@@ -48,6 +48,6 @@ O servidor de desenvolvimento estará acessível em http://localhost:4200
   docker run -d -p 4200:4200 --network=empodera-network frontend-angular
   ```
 
-**Obs.: O docker-compose do projeto deve ser executado anteriormente para criar a rede de comunicação entre os containers.**
+**Obs.: O comando docker-compose do projeto backend deve ser executado anteriormente para criar a rede de comunicação entre os containers.**
 
 O aplicativo estará acessível em http://localhost:4200
