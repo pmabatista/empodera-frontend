@@ -24,8 +24,22 @@ export class ClientViewComponent implements OnInit {
       property: 'document',
       label: 'CPF/CNPJ',    },
     { property: 'phone', label: 'Telefone' },
-    { property: 'contract.id', label: 'Contrato', fieldLabel: 'contractNumber', fieldValue: 'id', optionsService: 'http://localhost:3000/contract'},
-  ];
+    { property: 'contractId', visible: false },
+    {
+      label: 'Número do Contrato',
+      property: 'contractNumber',
+      divider: 'Dados do contrato',
+    },
+    {
+      label: 'Valor do Contrato',
+      property: 'contractValue',
+      type: 'currency',
+    },
+    { label: 'Data do Contrato', property: 'contractDate', type: 'date' },
+    {
+      label: 'Status do Contrato',
+      property: 'contractStatus',
+    },  ];
 
   constructor(private activatedRoute: ActivatedRoute) {}
 
